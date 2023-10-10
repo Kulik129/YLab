@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="" />
+    <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/YLab.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/action/TransactionType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/action/UserActions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/LogEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/Transaction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/ServiceUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/in/InputDataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/TransactionType.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/UserActions.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/LogEntry.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/Transaction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/User.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/InputDataService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/InputService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/ServiceUser.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/in/InputDataService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/in/InputScanner.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/test-classes/domain/service/UserServiceTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -136,6 +167,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Wallet-Service" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Wallet-Service" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
@@ -161,6 +205,17 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/YLab$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1696959648574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
