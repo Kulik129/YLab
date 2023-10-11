@@ -79,6 +79,7 @@ public class Transaction {
         this.sum = sum;
         this.localDateTime = localDateTime;
     }
+
     public Transaction(int id, TransactionType transactionType, double sum, LocalDateTime localDateTime) {
         this.id = id;
         this.transactionType = transactionType;

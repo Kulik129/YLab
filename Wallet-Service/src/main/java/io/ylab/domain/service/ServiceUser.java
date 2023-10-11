@@ -14,54 +14,54 @@ import java.util.List;
 public interface ServiceUser {
     /**
      * Регистрация пользователя в приложении.
-     * @param name имя пользователя.
-     * @param login логин пользователя.
+     *
+     * @param name     имя пользователя.
+     * @param login    логин пользователя.
      * @param password пароль пользователя.
      */
-    void registrationUser(String name, String login, String password);
+    boolean registrationUser(String name, String login, String password);
 
     /**
      * Аутентификация пользователя.
-     * @param login логин пользователя.
+     *
+     * @param login    логин пользователя.
      * @param password пароль пользователя.
      */
-    void authorizationUser(String login, String password);
+    boolean authorizationUser(String login, String password);
 
     /**
      * Просмотр текущего баланса пользователя.
-     * @param user передаваемый пользователь.
+     *
+     * @param login пользователя.
      * @return
      */
-    double currentBalance(User user);
+    double currentBalance(String login);
 
     /**
      * Снятие ДС со счета.
+     *
      * @param login логин пользователя.
-     * @param sum запрашиваемая сумма для снятия.
+     * @param sum   запрашиваемая сумма для снятия.
      */
     void withdrawalOfFunds(String login, double sum);
 
     /**
      * Пополнение счета.
+     *
      * @param login логин пользователя.
-     * @param sum сумма пополнения.
+     * @param sum   сумма пополнения.
      */
     void balanceReplenishment(String login, double sum);
 
     /**
      * Лист транзакций пользователя.
-     * @param user передаваемый пользователь.
-     * @param transactionType тип транзакции.
-     * @param sum сумма транзакции.
-     * @return список транзакций.
+     *
+     * @param login пользователя.
      */
-    List<Transaction> replenishmentHistory(User user, TransactionType transactionType, double sum);
+    void replenishmentHistory(String login);
 
     /**
      * Лист действий пользователя.
-     * @param user передаваемый пользователь.
-     * @param userActions тип действия пользователя.
-     * @return спиков действий пользователя.
      */
-    List<LogEntry> auditOfActions(User user, UserActions userActions);
+    void auditOfActions();
 }

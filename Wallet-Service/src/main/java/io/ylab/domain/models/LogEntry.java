@@ -67,13 +67,6 @@ public class LogEntry {
         this.localDateTime = localDateTime;
         this.user = user;
     }
-
-    public LogEntry(int id, UserActions userActions, LocalDateTime localDateTime) {
-        this.id = id;
-        this.userActions = userActions;
-        this.localDateTime = localDateTime;
-    }
-
     //endregion
 
     //regionToString

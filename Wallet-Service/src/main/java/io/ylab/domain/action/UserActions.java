@@ -8,8 +8,8 @@ public enum UserActions {
     AUTHORIZATION,
     LOGOUT,
     GET_BALANCE,
-    CREDIT, // снятие денег
-    DEBIT, // пополнение счета
+    CREDIT, // пополнение счета
+    DEBIT, // снятие денег
     FATAL,
     HISTORY
 }
