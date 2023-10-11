@@ -9,12 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Wallet_Service_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Wallet_Service_jar.xml" afterDir="false" />
+    <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="create jar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/Wallet_Service_jar/Wallet-Service.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/Wallet_Service_jar/Wallet-Service.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/LogEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/LogEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/LogEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/LogEntry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/User.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,10 +38,29 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="draft" />
+        <entry key="$PROJECT_DIR$" value="lesson1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="Kulik129" />
+        <option name="repository" value="YLab" />
+      </RepoCoordinatesHolder>
+    </option>
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="781aac7e-023a-4a4b-9963-6baea37b21d6" />
+        <option name="url" value="https://github.com/Kulik129/YLab.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -174,6 +198,14 @@
       <workItem from="1697008891292" duration="402000" />
       <workItem from="1697009444178" duration="333000" />
     </task>
+    <task id="LOCAL-00001" summary="create jar">
+      <created>1697010182472</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1697010182472</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,7 +223,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="LAST_COMMIT_MESSAGE" value="" />
+    <MESSAGE value="create jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="create jar" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/YLab$UserServiceTest.ic" NAME="UserServiceTest Coverage Results" MODIFIED="1696959648574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
