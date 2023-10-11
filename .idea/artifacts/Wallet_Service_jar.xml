@@ -1,8 +1,13 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="Wallet-Service:jar">
+  <artifact name="Wallet-Service:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Wallet_Service_jar</output-path>
-    <root id="archive" name="Wallet-Service.jar">
-      <element id="module-output" name="Wallet-Service" />
+    <root id="root">
+      <element id="archive" name="Wallet-Service.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/Wallet-Service/src/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Wallet-Service" />
+      </element>
     </root>
   </artifact>
 </component>
