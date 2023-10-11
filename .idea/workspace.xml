@@ -1,40 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Wallet-Service:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/YLab.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/action/TransactionType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/action/UserActions.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/LogEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/ServiceUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/in/InputDataService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/TransactionType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/UserActions.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/LogEntry.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/Transaction.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/InputDataService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/InputService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/ServiceUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/in/InputDataService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/in/InputScanner.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Wallet-Service/target/test-classes/domain/service/UserServiceTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/artifacts/Wallet_Service_jar/Wallet-Service.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Wallet_Service_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Wallet_Service_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,6 +44,11 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="workspaceImportEnabled" value="true" />
@@ -73,25 +60,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;graalvm-jdk-17&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "graalvm-jdk-17",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "vcs.Git",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.Main">
+}]]></component>
+  <component name="RunManager" selected="Application.io.ylab.application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="io.ylab.Main" />
       <module name="Wallet-Service" />
@@ -105,17 +93,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InputDataServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="io.ylab.application.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="io.ylab.application.Main" />
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.infrastructure.*" />
+          <option name="PATTERN" value="io.ylab.application.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="domain.infrastructure" />
-      <option name="MAIN_CLASS_NAME" value="domain.infrastructure.InputDataServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -182,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.io.ylab.application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="JUnit.InputDataServiceTest.testLogin_ValidCredentials" />
       </list>
     </recent_temporary>
   </component>
