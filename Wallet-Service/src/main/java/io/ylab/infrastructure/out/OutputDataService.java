@@ -1,2 +1,7 @@
-package io.ylab.infrastructure.out;public class OutputDataService {
+package io.ylab.infrastructure.out;
+/**
+ * Класс для обработки исходящего потока данных.
+ * Отвечает за отправку данных куда-то.
+ */
+public class OutputDataService {
 }
