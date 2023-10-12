@@ -11,15 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="create jar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/out/OutputDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/out/OutputDataService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/LogEntry.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/LogEntry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/models/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/test-classes/domain/service/UserServiceTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,11 +38,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="recentNewPullRequestHead">
       <RepoCoordinatesHolder>
@@ -83,27 +77,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "jdk.selected.JAVA_MODULE": "graalvm-jdk-17",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "vcs.Git",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;graalvm-jdk-17&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -112,81 +106,81 @@
       <recent name="io.ylab.infrastructure.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserRepositoryTest">
-    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
+          <option name="PATTERN" value="domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
-      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
+      <option name="PACKAGE_NAME" value="domain.service" />
+      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest.getListActions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testAuditOfActions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
+          <option name="PATTERN" value="domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
-      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="getListActions" />
+      <option name="PACKAGE_NAME" value="domain.service" />
+      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testAuditOfActions" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest.getLogEntry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testBalanceReplenishment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
+          <option name="PATTERN" value="domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
-      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="getLogEntry" />
+      <option name="PACKAGE_NAME" value="domain.service" />
+      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testBalanceReplenishment" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest.getTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testReplenishmentHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
+          <option name="PATTERN" value="domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
-      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="getTransaction" />
+      <option name="PACKAGE_NAME" value="domain.service" />
+      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testReplenishmentHistory" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest.testGetListActions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.testWithdrawalOfFundsSufficientBalance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
+          <option name="PATTERN" value="domain.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
-      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="testGetListActions" />
+      <option name="PACKAGE_NAME" value="domain.service" />
+      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
+      <option name="METHOD_NAME" value="testWithdrawalOfFundsSufficientBalance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -194,11 +188,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRepositoryTest" />
-        <item itemvalue="JUnit.UserRepositoryTest.testGetListActions" />
-        <item itemvalue="JUnit.UserRepositoryTest.getListActions" />
-        <item itemvalue="JUnit.UserRepositoryTest.getLogEntry" />
-        <item itemvalue="JUnit.UserRepositoryTest.getTransaction" />
+        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.UserServiceTest.testAuditOfActions" />
+        <item itemvalue="JUnit.UserServiceTest.testReplenishmentHistory" />
+        <item itemvalue="JUnit.UserServiceTest.testBalanceReplenishment" />
+        <item itemvalue="JUnit.UserServiceTest.testWithdrawalOfFundsSufficientBalance" />
       </list>
     </recent_temporary>
   </component>
@@ -214,6 +208,7 @@
       <workItem from="1696927891393" duration="39592000" />
       <workItem from="1697008891292" duration="402000" />
       <workItem from="1697009444178" duration="333000" />
+      <workItem from="1697138824552" duration="1997000" />
     </task>
     <task id="LOCAL-00001" summary="create jar">
       <created>1697010182472</created>

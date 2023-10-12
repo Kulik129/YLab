@@ -13,42 +13,6 @@ import io.ylab.infrastructure.repository.UserRepository;
  */
 
 public class UserService implements ServiceUser {
-//    /**
-//    /**
-//     * Для автоматической генерации ID пользователя.
-//     */
-//    private static int CREATE_USER_ID;
-//    /**
-//     *  Для автоматической генерации ID действия пользователя.
-//     */
-//    private static int GENERATE_ID_ACTION;
-//    /**
-//     * Для автоматической генерации ID действия.
-//     */
-//    private static int GENERATE_ID_TRANSACTION;
-//    /**
-//     * Пользователи.
-//     */
-//    public Map<String, User> userMap = new HashMap<>();
-//    /**
-//     * Действия.
-//     */
-//    public List<LogEntry> listActions = new ArrayList<>();
-//    /**
-//     * Транзакции.
-//     */
-//    public List<Transaction> transactions = new ArrayList<>();
-//
-//    /**
-//     * Пользователи для тестирования.
-//     */
-//
-//    {
-//        userMap.put("admin", new User(++CREATE_USER_ID, "Dmitrii", "admin", "1234"));
-//        userMap.put("vik", new User(++CREATE_USER_ID, "Viktor", "vik", "4321"));
-//    }
-//
-//
 
     private UserRepository repository;
 
