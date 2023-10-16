@@ -7,6 +7,8 @@ import io.ylab.domain.models.Transaction;
 import io.ylab.domain.models.User;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class UserRepository {
@@ -44,8 +46,8 @@ public class UserRepository {
 //
 
     //regionConnection
-    private static final String URL = "jdbc:postgresql://localhost:5432/ylab";
-    private static final String USERNAME = "user";
+    private static final String URL = "jdbc:postgresql://localhost:5432/wallet";
+    private static final String USERNAME = "root";
     private static final String PASSWORD = "12345678";
     private static Connection connection;
 
@@ -155,6 +157,18 @@ public class UserRepository {
      * @param sum             сумма транзакции.
      */
     public void addTransaction(User user, TransactionType transactionType, double sum) {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("INSERT INTO data.transactions VALUES (?,?,?,?)");
+            preparedStatement.setInt(1, user.getId());
+            preparedStatement.setString(2, String.valueOf(transactionType));
+            preparedStatement.setDouble(3,sum);
+            preparedStatement.setString(4, time());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 //        Transaction transaction = new Transaction(++TRANSACTION_ID, transactionType, sum, LocalDateTime.now());
 //        user.getTransactions().add(transaction);
     }
@@ -165,9 +179,7 @@ public class UserRepository {
      * @param user пользователь чью транзакцию считываем.
      */
     public void getTransaction(User user) {
-        for (Transaction transaction : user.getTransactions()) {
-            System.out.println(transaction);
-        }
+
     }
 
     //endregion
@@ -207,4 +219,11 @@ public class UserRepository {
     }
 
     //endregion
+
+    public String time(){
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
+        String formatterDataTime = now.format(formatter);
+        return formatterDataTime;
+    }
 }

@@ -10,11 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="create jar">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/docker/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,7 +36,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="draftL2" />
+        <entry key="$PROJECT_DIR$" value="liquibase" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -127,21 +128,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Wallet-Service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.service" />
-      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserServiceTest.testAuditOfActions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
@@ -190,13 +176,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker/docker.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="Wallet-Service/src/main/java/io/ylab/docker/docker.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.UserServiceTest" />
-        <item itemvalue="JUnit.UserServiceTest.testAuditOfActions" />
+        <item itemvalue="Docker.docker/docker.yml: Compose Deployment" />
         <item itemvalue="JUnit.UserServiceTest.testReplenishmentHistory" />
         <item itemvalue="JUnit.UserServiceTest.testBalanceReplenishment" />
+        <item itemvalue="JUnit.UserServiceTest.testAuditOfActions" />
       </list>
     </recent_temporary>
   </component>
@@ -216,6 +214,7 @@
       <workItem from="1697443151235" duration="4015000" />
       <workItem from="1697452480936" duration="21113000" />
       <workItem from="1697478883758" duration="305000" />
+      <workItem from="1697490750224" duration="2371000" />
     </task>
     <task id="LOCAL-00001" summary="create jar">
       <created>1697010182472</created>

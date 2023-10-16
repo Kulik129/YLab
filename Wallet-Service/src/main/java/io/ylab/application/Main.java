@@ -36,8 +36,8 @@ public class Main {
     private static void runDatabaseMigrations() {
         try {
             Connection connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/ylab",
-                    "user",
+                    "jdbc:postgresql://localhost:5432/wallet",
+                    "root",
                     "12345678"
             );
             Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(connection));
