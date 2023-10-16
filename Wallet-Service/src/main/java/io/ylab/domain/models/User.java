@@ -108,6 +108,12 @@ public class User {
         this.actionLog = new ArrayList<>();
     }
 
+    public User(String name, String login, String password) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+    }
+
     public User() {
     }
 

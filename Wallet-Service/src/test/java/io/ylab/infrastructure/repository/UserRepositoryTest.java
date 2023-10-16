@@ -23,7 +23,7 @@ public class UserRepositoryTest {
     @Test
     void getUserMap() {
         User user = new User(1, "Name", "name", "1234");
-        userRepository.addUserInMap(user);
+        userRepository.saveUserInDataBase(user);
 
         assertTrue(userRepository.userPresence("name"));
         assertEquals(user, userRepository.getUser("name"));
@@ -32,7 +32,7 @@ public class UserRepositoryTest {
     @Test
     void addUserInMap() {
         User user = new User(1, "TestUser", "test", "password");
-        userRepository.addUserInMap(user);
+        userRepository.saveUserInDataBase(user);
 
         assertTrue(userRepository.userPresence("test"));
         assertEquals(user, userRepository.getUser("test"));
@@ -41,7 +41,7 @@ public class UserRepositoryTest {
     @Test
     void getUser() {
         User user = new User(2,"Dima", "dim123","1234");
-        userRepository.addUserInMap(user);
+        userRepository.saveUserInDataBase(user);
 
         // Вызываем метод getUser для получения пользователя
         User retrievedUser = userRepository.getUser("dim123");
@@ -62,7 +62,7 @@ public class UserRepositoryTest {
     @Test
     void userPresence() {
         User user = new User(3,"Alisa", "al23", "4321");
-        userRepository.addUserInMap(user);
+        userRepository.saveUserInDataBase(user);
         assertTrue(userRepository.userPresence("al23"));
     }
 

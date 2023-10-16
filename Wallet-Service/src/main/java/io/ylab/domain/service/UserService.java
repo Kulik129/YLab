@@ -30,8 +30,8 @@ public class UserService implements ServiceUser {
     @Override
     public boolean registrationUser(String login, String password, String name) {
         if (!repository.userPresence(login)) {
-            User user = new User(repository.getUserMap().size() + 1, name, login, password);
-            repository.addUserInMap(user);
+            User user = new User(name, login, password);
+            repository.saveUserInDataBase(user);
             repository.addLogEntry(user, UserActions.REGISTRATION);
             System.out.println("Добро пожаловать " + name + "\n");
             return true;
@@ -87,6 +87,7 @@ public class UserService implements ServiceUser {
         try {
             if (currentBalance(user.getLogin()) >= 0 && sum <= currentBalance(user.getLogin())) {
                 user.setBalance(user.getBalance() - sum);
+                repository.updateBalance(user);
                 repository.addLogEntry(user, UserActions.DEBIT);
                 repository.addTransaction(user, TransactionType.DEBIT, sum);
 
@@ -110,6 +111,7 @@ public class UserService implements ServiceUser {
         User user = repository.getUser(login);
         user.setBalance(user.getBalance() + sum);
         System.out.println("Ваш баланс: " + user.getBalance() + "\n");
+        repository.updateBalance(user);
         repository.addLogEntry(user, UserActions.DEBIT);
         repository.addTransaction(user, TransactionType.DEBIT, sum);
     }

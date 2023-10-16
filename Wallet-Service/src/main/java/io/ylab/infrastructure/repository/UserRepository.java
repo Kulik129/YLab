@@ -6,70 +6,142 @@ import io.ylab.domain.models.LogEntry;
 import io.ylab.domain.models.Transaction;
 import io.ylab.domain.models.User;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.sql.*;
 import java.util.List;
-import java.util.Map;
 
 public class UserRepository {
-    private Map<String, User> userMap = new HashMap<>();
-    private List<LogEntry> listActions = new ArrayList<>();
-    /**
-     * Для автоматической генерации ID транзакции пользователя.
-     */
-    public static int TRANSACTION_ID;
 
-    /**
-     * Для автоматической генерации ID действия пользователя.
-     */
-    public static int ACTION_ID;
+//
+////    private Map<String, User> userMap = new HashMap<>();
+////    private List<LogEntry> listActions = new ArrayList<>();
+////    /**
+////     * Для автоматической генерации ID транзакции пользователя.
+////     */
+////    public static int TRANSACTION_ID;
+////
+////    /**
+////     * Для автоматической генерации ID действия пользователя.
+////     */
+////    public static int ACTION_ID;
+//
+////    /**
+////     * Пользователи для тестирования.
+////     */ {
+////        userMap.put("admin", new User(userMap.size() + 1, "Dmitrii", "admin", "1234"));
+////        userMap.put("vik", new User(userMap.size() + 1, "Viktor", "vik", "4321"));
+////    }
+//
+//    //regionUserMap
+//
+//    /**
+//     * Обратиться к мапе.
+//     *
+//     * @return мапа пользователей.
+//     */
+////    public Map<String, User> getUserMap() {
+////        return userMap;
+////    }
+//
 
-    /**
-     * Пользователи для тестирования.
-     */ {
-        userMap.put("admin", new User(userMap.size() + 1, "Dmitrii", "admin", "1234"));
-        userMap.put("vik", new User(userMap.size() + 1, "Viktor", "vik", "4321"));
+    //regionConnection
+    private static final String URL = "jdbc:postgresql://localhost:5432/ylab";
+    private static final String USERNAME = "user";
+    private static final String PASSWORD = "12345678";
+    private static Connection connection;
+
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+    //endregion
 
-    //regionUserMap
-
-    /**
-     * Обратиться к мапе.
-     *
-     * @return мапа пользователей.
-     */
-    public Map<String, User> getUserMap() {
-        return userMap;
-    }
+    //regionUser
 
     /**
-     * Добавить пользователя в мапу.
+     * Добавить пользователя в БД.
      *
      * @param user передаем созданного юзера.
      */
-    public void addUserInMap(User user) {
-        userMap.put(user.getLogin(), user);
+    public void saveUserInDataBase(User user) {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement(
+                            "INSERT INTO data.users(name, login, password, balance) VALUES(?,?,?,?)"
+                    );
+
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getLogin());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setDouble(4, user.getBalance());
+
+            preparedStatement.executeUpdate();
+
+            connection.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
-     * Получить пользователя по его ключу.
+     * Получить пользователя по его логину.
      *
      * @param login логин пользователя в качестве ключа.
      * @return объект User.
      */
     public User getUser(String login) {
-        return userMap.get(login);
+        User user = new User();
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("SELECT * FROM data.users WHERE login=?");
+            preparedStatement.setString(1, login);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+
+                user.setId(resultSet.getInt("id"));
+                user.setName(resultSet.getString("name"));
+                user.setLogin(resultSet.getString("login"));
+                user.setPassword(resultSet.getString("password"));
+                user.setBalance(resultSet.getDouble("balance"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return user;
     }
 
     /**
-     * Проверка существования пользователя в мапе.
+     * Проверка существования пользователя в БД.
      *
      * @param login логин пользователя в качестве ключа.
      * @return true если присутствует.
      */
     public boolean userPresence(String login) {
-        return userMap.containsKey(login);
+        User user = getUser(login);
+        if (user != null && login.equals(user.getLogin())) {
+            return true;
+        }
+        return false;
+    }
+
+    public void updateBalance(User user) {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("UPDATE data.users SET balance=? WHERE login=?");
+            preparedStatement.setDouble(1, user.getBalance());
+            preparedStatement.setString(2,user.getLogin());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     //endregion
 
@@ -83,8 +155,8 @@ public class UserRepository {
      * @param sum             сумма транзакции.
      */
     public void addTransaction(User user, TransactionType transactionType, double sum) {
-        Transaction transaction = new Transaction(++TRANSACTION_ID, transactionType, sum, LocalDateTime.now());
-        user.getTransactions().add(transaction);
+//        Transaction transaction = new Transaction(++TRANSACTION_ID, transactionType, sum, LocalDateTime.now());
+//        user.getTransactions().add(transaction);
     }
 
     /**
@@ -109,9 +181,9 @@ public class UserRepository {
      * @param userActions активность.
      */
     public void addLogEntry(User user, UserActions userActions) {
-        LogEntry logEntry = new LogEntry(++ACTION_ID, userActions, LocalDateTime.now(), user);
-        user.getActionLog().add(logEntry);
-        listActions.add(logEntry);
+//        LogEntry logEntry = new LogEntry(++ACTION_ID, userActions, LocalDateTime.now(), user);
+//        user.getActionLog().add(logEntry);
+//        listActions.add(logEntry);
     }
 
     /**
@@ -131,7 +203,7 @@ public class UserRepository {
      * @return лист активностей.
      */
     public List<LogEntry> getListActions() {
-        return listActions;
+        return null;
     }
 
     //endregion
