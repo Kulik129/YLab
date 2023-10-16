@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.10.xsd">
+
+    <changeSet id="002-insert-data" author="Dmitrii_Kulik">
+
+        <sql>
+            INSERT INTO data.users (name, login, password, balance)
+            VALUES ('Dmitrii', 'admin', '1234', 100.00);
+            INSERT INTO data.users (name, login, password, balance)
+            VALUES ('Viktor', 'vik', '4321', 50.00);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
