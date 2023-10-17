@@ -10,10 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="create jar">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/action/UserActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/action/UserActions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/chenchelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/chenchelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/chenchelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/chenchelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/UserActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/UserActions.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" afterDir="false" />
     </list>
@@ -127,22 +131,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testAuditOfActions" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Wallet-Service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.service" />
-      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testAuditOfActions" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserServiceTest.testBalanceReplenishment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
@@ -181,6 +169,14 @@
       </deployment>
       <method v="2" />
     </configuration>
+    <configuration name="container/docker.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="Wallet-Service/src/main/java/io/ylab/container/docker.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="docker/docker.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
       <deployment type="docker-compose.yml">
         <settings>
@@ -192,10 +188,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Docker.container/docker.yml: Compose Deployment" />
         <item itemvalue="Docker.docker/docker.yml: Compose Deployment" />
         <item itemvalue="JUnit.UserServiceTest.testReplenishmentHistory" />
         <item itemvalue="JUnit.UserServiceTest.testBalanceReplenishment" />
-        <item itemvalue="JUnit.UserServiceTest.testAuditOfActions" />
       </list>
     </recent_temporary>
   </component>

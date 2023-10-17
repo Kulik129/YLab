@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="postgres@localhost2" uuid="46a77c04-101d-4ca7-8bd2-702c5f473e49">
+    <data-source source="LOCAL" name="wallet-service" uuid="a301de7b-2eb2-4b9c-849f-9ad9c452d18c">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/wallet</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/y_lab</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

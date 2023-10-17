@@ -36,7 +36,7 @@ public class Main {
     private static void runDatabaseMigrations() {
         try {
             Connection connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/wallet",
+                    "jdbc:postgresql://localhost:5432/y_lab",
                     "root",
                     "12345678"
             );

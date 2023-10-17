@@ -15,7 +15,7 @@ import java.util.Properties;
 public class UserRepository {
 
     //regionConnection
-    private static final String URL = "jdbc:postgresql://localhost:5432/wallet";
+    private static final String URL = "jdbc:postgresql://localhost:5432/y_lab";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "12345678";
 
