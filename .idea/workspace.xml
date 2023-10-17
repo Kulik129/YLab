@@ -10,16 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="create jar">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/docker/docker.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/chenchelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/chenchelog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/chenchelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/chenchelog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/UserActions.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/action/UserActions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +95,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -212,6 +207,8 @@
       <workItem from="1697452480936" duration="21113000" />
       <workItem from="1697478883758" duration="305000" />
       <workItem from="1697490750224" duration="2371000" />
+      <workItem from="1697562755613" duration="581000" />
+      <workItem from="1697563350122" duration="108000" />
     </task>
     <task id="LOCAL-00001" summary="create jar">
       <created>1697010182472</created>

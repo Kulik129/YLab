@@ -4,13 +4,9 @@ import io.ylab.domain.action.TransactionType;
 import io.ylab.domain.action.UserActions;
 import io.ylab.domain.models.User;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Properties;
 
 public class UserRepository {
 
@@ -33,32 +29,6 @@ public class UserRepository {
             throw new RuntimeException(e);
         }
     }
-//    Properties properties = new Properties();
-//    FileInputStream fileInputStream;
-//
-//    {
-//        try {
-//            fileInputStream = new FileInputStream("application.properties");
-//            properties.load(fileInputStream);
-//        } catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//    String URL = properties.getProperty("datasource.url");
-//    String USERNAME = properties.getProperty("datasource.username");
-//    String PASSWORD = properties.getProperty("datasource.password");
-//
-//    Connection connection;
-//
-//    {
-//        try {
-//            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     //endregion
 
