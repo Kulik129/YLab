@@ -4,9 +4,13 @@ import io.ylab.domain.action.TransactionType;
 import io.ylab.domain.action.UserActions;
 import io.ylab.domain.models.User;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Properties;
 
 public class UserRepository {
 
@@ -14,6 +18,7 @@ public class UserRepository {
     private static final String URL = "jdbc:postgresql://localhost:5432/wallet";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "12345678";
+
     private static Connection connection;
 
     static {
@@ -28,6 +33,33 @@ public class UserRepository {
             throw new RuntimeException(e);
         }
     }
+//    Properties properties = new Properties();
+//    FileInputStream fileInputStream;
+//
+//    {
+//        try {
+//            fileInputStream = new FileInputStream("application.properties");
+//            properties.load(fileInputStream);
+//        } catch (FileNotFoundException e) {
+//            throw new RuntimeException(e);
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//    String URL = properties.getProperty("datasource.url");
+//    String USERNAME = properties.getProperty("datasource.username");
+//    String PASSWORD = properties.getProperty("datasource.password");
+//
+//    Connection connection;
+//
+//    {
+//        try {
+//            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+
     //endregion
 
     //regionUser
@@ -125,7 +157,6 @@ public class UserRepository {
      * @param transactionSum  сумма транзакции.
      */
     public void addTransaction(User user, TransactionType transactionType, double transactionSum) {
-        System.out.println(transactionSum);
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO data.transactions(user_id, transaction_type, transaction_sum, date_time) VALUES (?,?,?,?)");
@@ -175,6 +206,7 @@ public class UserRepository {
      * @param userActions активность.
      */
     public void addLogEntry(User user, UserActions userActions) {
+        user = getUser(user.getLogin());
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO data.actions(user_id, user_actions, date_time) VALUES (?,?,?)");
@@ -194,15 +226,17 @@ public class UserRepository {
     public void getLogEntries() {
         try {
             PreparedStatement preparedStatement =
-                    connection.prepareStatement("SELECT user_id, user_actions, date_time FROM data.actions");
+                    connection.prepareStatement("SELECT a.user_actions, a.date_time, u.login\n" +
+                            "FROM data.actions a\n" +
+                            "JOIN data.users u ON a.user_id = u.id ");
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("user_id");
                 String action = resultSet.getString("user_actions");
                 String time = resultSet.getString("date_time");
+                String login = resultSet.getString("login");
 
-                System.out.println("id пользователя: " + id + " действие: " + action + " Дата и время: " + time);
+                System.out.println("Пользователь: " + login + ", действие: " + action + ", Дата и время: " + time);
             }
         } catch (SQLException e) {
             System.out.println("Ошибка в методе getLogEntries. log: " + e.getMessage());

@@ -87,8 +87,8 @@ public class UserService implements ServiceUser {
             if (currentBalance(user.getLogin()) >= 0 && sum <= currentBalance(user.getLogin())) {
                 user.setBalance(user.getBalance() - sum);
                 repository.updateBalance(user);
-                repository.addLogEntry(user, UserActions.CREDIT);
-                repository.addTransaction(user, TransactionType.CREDIT, sum);
+                repository.addLogEntry(user, UserActions.DEBIT);
+                repository.addTransaction(user, TransactionType.DEBIT, sum);
 
             } else {
                 throw new IllegalArgumentException("Недостаточно средств");
@@ -109,10 +109,9 @@ public class UserService implements ServiceUser {
     public void balanceReplenishment(String login, double sum) {
         User user = repository.getUser(login);
         user.setBalance(user.getBalance() + sum);
-        System.out.println("Ваш баланс: " + user.getBalance() + "\n");
         repository.updateBalance(user);
-        repository.addLogEntry(user, UserActions.DEBIT);
-        repository.addTransaction(user, TransactionType.DEBIT, sum);
+        repository.addLogEntry(user, UserActions.CREDIT);
+        repository.addTransaction(user, TransactionType.CREDIT, sum);
     }
 
     /**
@@ -124,6 +123,7 @@ public class UserService implements ServiceUser {
     public void replenishmentHistory(String login) {
         User user = repository.getUser(login);
         repository.getTransaction(user);
+        repository.addLogEntry(user, UserActions.HISTORY);
     }
 
     /**
