@@ -1,16 +1,13 @@
 package io.ylab.application;
 
 import io.ylab.domain.service.UserService;
+import io.ylab.infrastructure.migrations.DatabaseMigrator;
 import io.ylab.infrastructure.in.InputDataService;
 import io.ylab.infrastructure.repository.UserRepository;
-import liquibase.Liquibase;
-import liquibase.database.Database;
-import liquibase.database.DatabaseFactory;
-import liquibase.database.jvm.JdbcConnection;
-import liquibase.resource.ClassLoaderResourceAccessor;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * Точка входа в приложение.
@@ -18,33 +15,27 @@ import java.sql.DriverManager;
 
 public class Main {
     public static void main(String[] args) {
-        // Запускаем миграции
-        runDatabaseMigrations();
-        // Создаем репозиторий пользователей
-        UserRepository userRepository = new UserRepository();
-        // Создаем сервис пользователей, внедряя в него репозиторий
-        UserService userService = new UserService(userRepository);
-        // Создаем сервис ввода данных, внедряя в него сервис пользователей
-        InputDataService inputDataService = new InputDataService(userService);
-
-        inputDataService.start();
-    }
-
-    /**
-     * Запуск миграций
-     */
-    private static void runDatabaseMigrations() {
+        Properties properties = new Properties();
         try {
-            Connection connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/y_lab",
-                    "root",
-                    "12345678"
-            );
-            Database database = DatabaseFactory.getInstance().findCorrectDatabaseImplementation(new JdbcConnection(connection));
-            Liquibase liquibase = new Liquibase("db/changelog/chenchelog.xml", new ClassLoaderResourceAccessor(), database);
-            liquibase.update();
-            System.out.println("Миграции успешно выполнены!");
-        } catch (Exception e) {
+            ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+            InputStream inputStream = classLoader.getResourceAsStream("application.properties");
+            properties.load(inputStream);
+
+            String URL = properties.getProperty("db.url");
+            String USER_NAME = properties.getProperty("db.username");
+            String PASSWORD = properties.getProperty("db.password");
+
+            // Запускаем миграции
+            DatabaseMigrator.runDatabaseMigrations(URL, USER_NAME, PASSWORD);
+            // Создаем репозиторий пользователей
+            UserRepository userRepository = new UserRepository(URL, USER_NAME, PASSWORD);
+            // Создаем сервис пользователей, внедряя в него репозиторий
+            UserService userService = new UserService(userRepository);
+            // Создаем сервис ввода данных, внедряя в него сервис пользователей
+            InputDataService inputDataService = new InputDataService(userService);
+
+            inputDataService.start();
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

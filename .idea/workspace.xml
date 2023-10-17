@@ -11,10 +11,14 @@
   <component name="ChangeListManager">
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="create jar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/docker/docker.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/test-classes/io/ylab/infrastructure/repository/UserRepositoryTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +38,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="liquibase" />
+        <entry key="$PROJECT_DIR$" value="draft2L2" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -112,47 +116,81 @@
       <recent name="io.ylab.infrastructure.repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="io.ylab.application.Main" />
+  <component name="RunManager" selected="JUnit.UserRepositoryTest">
+    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="io.ylab.application.*" />
+          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
+      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testBalanceReplenishment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepositoryTest.testAddLogEntry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.service.*" />
+          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="domain.service" />
-      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testBalanceReplenishment" />
+      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
+      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testAddLogEntry" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.testReplenishmentHistory" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepositoryTest.testAddTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="domain.service.*" />
+          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="domain.service" />
-      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceTest" />
-      <option name="METHOD_NAME" value="testReplenishmentHistory" />
+      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
+      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testAddTransaction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testGetTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wallet-Service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
+      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testGetTransaction" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.testUpdateBalance" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wallet-Service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
+      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="testUpdateBalance" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -164,29 +202,13 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="container/docker.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="Wallet-Service/src/main/java/io/ylab/container/docker.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration name="docker/docker.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
-      <deployment type="docker-compose.yml">
-        <settings>
-          <option name="sourceFilePath" value="Wallet-Service/src/main/java/io/ylab/docker/docker.yml" />
-        </settings>
-      </deployment>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Docker.container/docker.yml: Compose Deployment" />
-        <item itemvalue="Docker.docker/docker.yml: Compose Deployment" />
-        <item itemvalue="JUnit.UserServiceTest.testReplenishmentHistory" />
-        <item itemvalue="JUnit.UserServiceTest.testBalanceReplenishment" />
+        <item itemvalue="JUnit.UserRepositoryTest" />
+        <item itemvalue="JUnit.UserRepositoryTest.testAddLogEntry" />
+        <item itemvalue="JUnit.UserRepositoryTest.testGetTransaction" />
+        <item itemvalue="JUnit.UserRepositoryTest.testAddTransaction" />
+        <item itemvalue="JUnit.UserRepositoryTest.testUpdateBalance" />
       </list>
     </recent_temporary>
   </component>
@@ -209,6 +231,8 @@
       <workItem from="1697490750224" duration="2371000" />
       <workItem from="1697562755613" duration="581000" />
       <workItem from="1697563350122" duration="108000" />
+      <workItem from="1697563467735" duration="4465000" />
+      <workItem from="1697568728405" duration="10061000" />
     </task>
     <task id="LOCAL-00001" summary="create jar">
       <created>1697010182472</created>

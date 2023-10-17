@@ -9,25 +9,17 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class UserRepository {
-
+    private final Connection connection;
     //regionConnection
-    private static final String URL = "jdbc:postgresql://localhost:5432/y_lab";
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "12345678";
-
-    private static Connection connection;
-
-    static {
+    public UserRepository(String URL, String USERNAME, String PASSWORD){
         try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            this.connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
         }
-        try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    }
+    public UserRepository(Connection connection) {
+        this.connection = connection;
     }
 
     //endregion
@@ -127,6 +119,7 @@ public class UserRepository {
      * @param transactionSum  сумма транзакции.
      */
     public void addTransaction(User user, TransactionType transactionType, double transactionSum) {
+        user = getUser(user.getLogin());
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO data.transactions(user_id, transaction_type, transaction_sum, date_time) VALUES (?,?,?,?)");
