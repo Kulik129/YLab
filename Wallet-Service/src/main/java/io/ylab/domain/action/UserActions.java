@@ -7,8 +7,8 @@ public enum UserActions {
     REGISTRATION,
     AUTHORIZATION,
     GET_BALANCE,
-    CREDIT, // зачисление
-    DEBIT, // списание средств со счета
+    CREDIT,
+    DEBIT,
     FATAL,
     HISTORY
 }

@@ -1,6 +1,5 @@
 package containers;
 
-import io.ylab.infrastructure.repository.UserRepositoryTest;
 import org.testcontainers.containers.PostgreSQLContainer;
 
 public class PostgresTestContainer extends PostgreSQLContainer<PostgresTestContainer> {

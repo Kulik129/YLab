@@ -1,12 +1,5 @@
 package io.ylab.domain.service;
 
-import io.ylab.domain.action.TransactionType;
-import io.ylab.domain.action.UserActions;
-import io.ylab.domain.models.LogEntry;
-import io.ylab.domain.models.Transaction;
-import io.ylab.domain.models.User;
-
-import java.util.List;
 
 /**
  * Интерфейс основной бизнес логики.

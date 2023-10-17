@@ -10,14 +10,16 @@ import java.time.format.DateTimeFormatter;
 
 public class UserRepository {
     private final Connection connection;
+
     //regionConnection
-    public UserRepository(String URL, String USERNAME, String PASSWORD){
+    public UserRepository(String URL, String USERNAME, String PASSWORD) {
         try {
             this.connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
         }
     }
+
     public UserRepository(Connection connection) {
         this.connection = connection;
     }
@@ -93,6 +95,7 @@ public class UserRepository {
 
     /**
      * Обновление баланса у пользователя.
+     *
      * @param user пользователь, которому будет присвоено обновление.
      */
     public void updateBalance(User user) {
