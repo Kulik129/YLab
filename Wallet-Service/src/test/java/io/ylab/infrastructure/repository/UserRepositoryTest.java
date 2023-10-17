@@ -102,7 +102,7 @@ public class UserRepositoryTest {
         LogEntry log = new LogEntry(4,UserActions.FATAL, LocalDateTime.now(), user);
         user.getActionLog().add(log);
 
-        userRepository.getLogEntry(user);
+        userRepository.getLogEntries();
     }
 
     @Test

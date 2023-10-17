@@ -2,7 +2,6 @@ package io.ylab.domain.service;
 
 import io.ylab.domain.action.TransactionType;
 import io.ylab.domain.action.UserActions;
-import io.ylab.domain.models.LogEntry;
 import io.ylab.domain.models.User;
 import io.ylab.infrastructure.repository.UserRepository;
 
@@ -88,8 +87,8 @@ public class UserService implements ServiceUser {
             if (currentBalance(user.getLogin()) >= 0 && sum <= currentBalance(user.getLogin())) {
                 user.setBalance(user.getBalance() - sum);
                 repository.updateBalance(user);
-                repository.addLogEntry(user, UserActions.DEBIT);
-                repository.addTransaction(user, TransactionType.DEBIT, sum);
+                repository.addLogEntry(user, UserActions.CREDIT);
+                repository.addTransaction(user, TransactionType.CREDIT, sum);
 
             } else {
                 throw new IllegalArgumentException("Недостаточно средств");
@@ -132,8 +131,6 @@ public class UserService implements ServiceUser {
      */
     @Override
     public void auditOfActions() {
-        for (LogEntry log : repository.getListActions()) {
-            System.out.println(log);
-        }
+        repository.getLogEntries();
     }
 }

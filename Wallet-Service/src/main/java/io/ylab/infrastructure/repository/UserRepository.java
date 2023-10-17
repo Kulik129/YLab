@@ -2,48 +2,13 @@ package io.ylab.infrastructure.repository;
 
 import io.ylab.domain.action.TransactionType;
 import io.ylab.domain.action.UserActions;
-import io.ylab.domain.models.LogEntry;
-import io.ylab.domain.models.Transaction;
 import io.ylab.domain.models.User;
 
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 public class UserRepository {
-
-//
-////    private Map<String, User> userMap = new HashMap<>();
-////    private List<LogEntry> listActions = new ArrayList<>();
-////    /**
-////     * Для автоматической генерации ID транзакции пользователя.
-////     */
-////    public static int TRANSACTION_ID;
-////
-////    /**
-////     * Для автоматической генерации ID действия пользователя.
-////     */
-////    public static int ACTION_ID;
-//
-////    /**
-////     * Пользователи для тестирования.
-////     */ {
-////        userMap.put("admin", new User(userMap.size() + 1, "Dmitrii", "admin", "1234"));
-////        userMap.put("vik", new User(userMap.size() + 1, "Viktor", "vik", "4321"));
-////    }
-//
-//    //regionUserMap
-//
-//    /**
-//     * Обратиться к мапе.
-//     *
-//     * @return мапа пользователей.
-//     */
-////    public Map<String, User> getUserMap() {
-////        return userMap;
-////    }
-//
 
     //regionConnection
     private static final String URL = "jdbc:postgresql://localhost:5432/wallet";
@@ -86,9 +51,8 @@ public class UserRepository {
 
             preparedStatement.executeUpdate();
 
-            connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в методе saveUserInDataBase. log: " + e.getMessage());
         }
     }
 
@@ -114,7 +78,7 @@ public class UserRepository {
                 user.setBalance(resultSet.getDouble("balance"));
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в методе getUser. log: " + e.getMessage());
         }
         return user;
     }
@@ -133,16 +97,20 @@ public class UserRepository {
         return false;
     }
 
+    /**
+     * Обновление баланса у пользователя.
+     * @param user пользователь, которому будет присвоено обновление.
+     */
     public void updateBalance(User user) {
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("UPDATE data.users SET balance=? WHERE login=?");
             preparedStatement.setDouble(1, user.getBalance());
-            preparedStatement.setString(2,user.getLogin());
+            preparedStatement.setString(2, user.getLogin());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в методе updateBalance. log: " + e.getMessage());
         }
     }
     //endregion
@@ -154,23 +122,23 @@ public class UserRepository {
      *
      * @param user            пользователь, которому будет присвоена транзакция.
      * @param transactionType тип транзакции.
-     * @param sum             сумма транзакции.
+     * @param transactionSum  сумма транзакции.
      */
-    public void addTransaction(User user, TransactionType transactionType, double sum) {
+    public void addTransaction(User user, TransactionType transactionType, double transactionSum) {
+        System.out.println(transactionSum);
         try {
             PreparedStatement preparedStatement =
-                    connection.prepareStatement("INSERT INTO data.transactions VALUES (?,?,?,?)");
+                    connection.prepareStatement("INSERT INTO data.transactions(user_id, transaction_type, transaction_sum, date_time) VALUES (?,?,?,?)");
+
             preparedStatement.setInt(1, user.getId());
-            preparedStatement.setString(2, String.valueOf(transactionType));
-            preparedStatement.setDouble(3,sum);
+            preparedStatement.setString(2, transactionType.toString());
+            preparedStatement.setDouble(3, transactionSum);
             preparedStatement.setString(4, time());
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.out.println("Ошибка в методе addTransaction. log: " + e.getMessage());
         }
-//        Transaction transaction = new Transaction(++TRANSACTION_ID, transactionType, sum, LocalDateTime.now());
-//        user.getTransactions().add(transaction);
     }
 
     /**
@@ -179,7 +147,21 @@ public class UserRepository {
      * @param user пользователь чью транзакцию считываем.
      */
     public void getTransaction(User user) {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("SELECT transaction_type, transaction_sum, date_time FROM data.transactions WHERE user_id = ?");
+            preparedStatement.setInt(1, user.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String transaction = resultSet.getString("transaction_type");
+                double sum = resultSet.getDouble("transaction_sum");
+                String time = resultSet.getString("date_time");
 
+                System.out.println("Транзакция: " + transaction + " сумма: " + sum + " Дата и время: " + time);
+            }
+        } catch (SQLException e) {
+            System.out.println("Ошибка в методе getTransaction. log: " + e.getMessage());
+        }
     }
 
     //endregion
@@ -193,37 +175,55 @@ public class UserRepository {
      * @param userActions активность.
      */
     public void addLogEntry(User user, UserActions userActions) {
-//        LogEntry logEntry = new LogEntry(++ACTION_ID, userActions, LocalDateTime.now(), user);
-//        user.getActionLog().add(logEntry);
-//        listActions.add(logEntry);
-    }
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("INSERT INTO data.actions(user_id, user_actions, date_time) VALUES (?,?,?)");
+            preparedStatement.setInt(1, user.getId());
+            preparedStatement.setString(2, userActions.toString());
+            preparedStatement.setString(3, time());
 
-    /**
-     * Получить список активностей пользователя.
-     *
-     * @param user пользователь чьи активности будут переданы для считывания.
-     */
-    public void getLogEntry(User user) {
-        for (LogEntry log : user.getActionLog()) {
-            System.out.println(log);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 
     /**
-     * Получить доступ к общему листу действий всех пользователей.
-     *
-     * @return лист активностей.
+     * Получить список активностей пользователя.
      */
-    public List<LogEntry> getListActions() {
-        return null;
+    public void getLogEntries() {
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("SELECT user_id, user_actions, date_time FROM data.actions");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("user_id");
+                String action = resultSet.getString("user_actions");
+                String time = resultSet.getString("date_time");
+
+                System.out.println("id пользователя: " + id + " действие: " + action + " Дата и время: " + time);
+            }
+        } catch (SQLException e) {
+            System.out.println("Ошибка в методе getLogEntries. log: " + e.getMessage());
+        }
     }
 
     //endregion
 
-    public String time(){
+    //regionDateTime
+
+    /**
+     * Форматирование даты и времени.
+     *
+     * @return время в строковом формате.
+     */
+    public String time() {
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
         String formatterDataTime = now.format(formatter);
         return formatterDataTime;
     }
+
+    //endregion
 }

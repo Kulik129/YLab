@@ -28,9 +28,9 @@
             <column name="user_id" type="INTEGER">
                 <constraints foreignKeyName="transaction_fk_user" references="data.users(id)"/>
             </column>
-            <column name="transactionType" type="VARCHAR(55)"/>
-            <column name="sum" type="INTEGER"/>
-            <column name="data_time" type="TIMESTAMP"/>
+            <column name="transaction_type" type="VARCHAR(55)"/>
+            <column name="transaction_sum" type="INTEGER"/>
+            <column name="date_time" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
 
@@ -43,8 +43,8 @@
             <column name="user_id" type="BIGINT">
                 <constraints foreignKeyName="action_fk_user" references="data.users(id)"/>
             </column>
-            <column name="userActions" type="VARCHAR(55)"/>
-            <column name="data_time" type="TIMESTAMP"/>
+            <column name="user_actions" type="VARCHAR(55)"/>
+            <column name="date_time" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
 
