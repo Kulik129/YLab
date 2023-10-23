@@ -43,7 +43,7 @@ public class UserRepositoryTest extends ContainersEnvironment {
     @Test
     void testUserPresenceWhenUserExists() {
         User testUser = new User("uniqueLogin", "3342342", "4342424");
-        userRepository.saveUserInDataBase(testUser);
+        userRepository.saveUser(testUser);
 
         assertTrue(userRepository.userPresence("3342342"));
     }
@@ -56,9 +56,9 @@ public class UserRepositoryTest extends ContainersEnvironment {
     @Test
     void testGetUserWhenUserExists() {
         User user = new User("Nik", "nik123", "123");
-        userRepository.saveUserInDataBase(user);
+        userRepository.saveUser(user);
 
-        User retrievedUser = userRepository.getUser("nik123");
+        User retrievedUser = userRepository.findByLogin("nik123");
 
         assertNotNull(retrievedUser);
         assertEquals("nik123", retrievedUser.getLogin());
@@ -73,12 +73,12 @@ public class UserRepositoryTest extends ContainersEnvironment {
     @Test
     void testUpdateBalance() {
         User testUser = new User("Asti", "asti12", "8765");
-        userRepository.saveUserInDataBase(testUser);
+        userRepository.saveUser(testUser);
 
         testUser.setBalance(150.0);
         userRepository.updateBalance(testUser);
 
-        User retrievedUser = userRepository.getUser("asti12");
+        User retrievedUser = userRepository.findByLogin("asti12");
 
         assertEquals(150.0, retrievedUser.getBalance(), 0.001); // Указываем допустимое отклонение для double
     }
@@ -86,9 +86,9 @@ public class UserRepositoryTest extends ContainersEnvironment {
     @Test
     void testAddTransaction() {
         User testUser = new User("Philopp", "pp12", "43432");
-        userRepository.saveUserInDataBase(testUser);
+        userRepository.saveUser(testUser);
 
-        userRepository.addTransaction(testUser, TransactionType.CREDIT, 50.0);
+        userRepository.saveTransaction(testUser, TransactionType.CREDIT, 50.0);
 
         userRepository.getTransaction(testUser);
 
@@ -97,18 +97,18 @@ public class UserRepositoryTest extends ContainersEnvironment {
     @Test
     void testGetTransaction() {
         User testUser = new User("Maxim", "galkin", "32132131");
-        userRepository.saveUserInDataBase(testUser);
+        userRepository.saveUser(testUser);
 
-        userRepository.addTransaction(testUser, TransactionType.DEBIT, 50.0);
+        userRepository.saveTransaction(testUser, TransactionType.DEBIT, 50.0);
 
         userRepository.getTransaction(testUser);
     }
     @Test
     void testAddLogEntry() {
         User testUser = new User("Nikolai", "baskov", "3231321");
-        userRepository.saveUserInDataBase(testUser);
+        userRepository.saveUser(testUser);
 
-        userRepository.addLogEntry(testUser, UserActions.AUTHORIZATION);
+        userRepository.saveAction(testUser, UserActions.AUTHORIZATION);
     }
 
 }

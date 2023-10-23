@@ -12,7 +12,6 @@ import java.util.Properties;
 /**
  * Точка входа в приложение.
  */
-
 public class Main {
     public static void main(String[] args) {
         Properties properties = new Properties();
@@ -25,13 +24,9 @@ public class Main {
             String USER_NAME = properties.getProperty("db.username");
             String PASSWORD = properties.getProperty("db.password");
 
-            // Запускаем миграции
             DatabaseMigrator.runDatabaseMigrations(URL, USER_NAME, PASSWORD);
-            // Создаем репозиторий пользователей
             UserRepository userRepository = new UserRepository(URL, USER_NAME, PASSWORD);
-            // Создаем сервис пользователей, внедряя в него репозиторий
             UserService userService = new UserService(userRepository);
-            // Создаем сервис ввода данных, внедряя в него сервис пользователей
             InputDataService inputDataService = new InputDataService(userService);
 
             inputDataService.start();

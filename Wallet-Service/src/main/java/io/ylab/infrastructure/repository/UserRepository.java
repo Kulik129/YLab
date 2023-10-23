@@ -11,7 +11,6 @@ import java.time.format.DateTimeFormatter;
 public class UserRepository {
     private final Connection connection;
 
-    //regionConnection
     public UserRepository(String URL, String USERNAME, String PASSWORD) {
         try {
             this.connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
@@ -24,31 +23,25 @@ public class UserRepository {
         this.connection = connection;
     }
 
-    //endregion
-
-    //regionUser
-
     /**
      * Добавить пользователя в БД.
      *
      * @param user передаем созданного юзера.
      */
-    public void saveUserInDataBase(User user) {
+    public void saveUser(User user) {
+
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement(
                             "INSERT INTO data.users(name, login, password, balance) VALUES(?,?,?,?)"
                     );
-
             preparedStatement.setString(1, user.getName());
             preparedStatement.setString(2, user.getLogin());
             preparedStatement.setString(3, user.getPassword());
             preparedStatement.setDouble(4, user.getBalance());
-
             preparedStatement.executeUpdate();
-
         } catch (SQLException e) {
-            System.out.println("Ошибка в методе saveUserInDataBase. log: " + e.getMessage());
+            System.err.println("Ошибка в методе saveUserInDataBase. log: " + e.getMessage());
         }
     }
 
@@ -58,7 +51,7 @@ public class UserRepository {
      * @param login логин пользователя в качестве ключа.
      * @return объект User.
      */
-    public User getUser(String login) {
+    public User findByLogin(String login) {
         User user = new User();
         try {
             PreparedStatement preparedStatement =
@@ -66,7 +59,6 @@ public class UserRepository {
             preparedStatement.setString(1, login);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
-
                 user.setId(resultSet.getInt("id"));
                 user.setName(resultSet.getString("name"));
                 user.setLogin(resultSet.getString("login"));
@@ -74,7 +66,7 @@ public class UserRepository {
                 user.setBalance(resultSet.getDouble("balance"));
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка в методе getUser. log: " + e.getMessage());
+            System.err.println("Ошибка в методе getUser. log: " + e.getMessage());
         }
         return user;
     }
@@ -86,7 +78,7 @@ public class UserRepository {
      * @return true если присутствует.
      */
     public boolean userPresence(String login) {
-        User user = getUser(login);
+        User user = findByLogin(login);
         if (user != null && login.equals(user.getLogin())) {
             return true;
         }
@@ -107,12 +99,9 @@ public class UserRepository {
 
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка в методе updateBalance. log: " + e.getMessage());
+            System.err.println("Ошибка в методе updateBalance. log: " + e.getMessage());
         }
     }
-    //endregion
-
-    //regionTransaction
 
     /**
      * Добавить транзакцию пользователю
@@ -121,8 +110,8 @@ public class UserRepository {
      * @param transactionType тип транзакции.
      * @param transactionSum  сумма транзакции.
      */
-    public void addTransaction(User user, TransactionType transactionType, double transactionSum) {
-        user = getUser(user.getLogin());
+    public void saveTransaction(User user, TransactionType transactionType, double transactionSum) {
+        user = findByLogin(user.getLogin());
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO data.transactions(user_id, transaction_type, transaction_sum, date_time) VALUES (?,?,?,?)");
@@ -131,10 +120,9 @@ public class UserRepository {
             preparedStatement.setString(2, transactionType.toString());
             preparedStatement.setDouble(3, transactionSum);
             preparedStatement.setString(4, time());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Ошибка в методе addTransaction. log: " + e.getMessage());
+            System.err.println("Ошибка в методе addTransaction. log: " + e.getMessage());
         }
     }
 
@@ -157,13 +145,9 @@ public class UserRepository {
                 System.out.println("Транзакция: " + transaction + " сумма: " + sum + " Дата и время: " + time);
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка в методе getTransaction. log: " + e.getMessage());
+            System.err.println("Ошибка в методе getTransaction. log: " + e.getMessage());
         }
     }
-
-    //endregion
-
-    //regionLogEntry
 
     /**
      * Добавить активность в список.
@@ -171,15 +155,14 @@ public class UserRepository {
      * @param user        пользователь, которому будет присвоена активность.
      * @param userActions активность.
      */
-    public void addLogEntry(User user, UserActions userActions) {
-        user = getUser(user.getLogin());
+    public void saveAction(User user, UserActions userActions) {
+        user = findByLogin(user.getLogin());
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO data.actions(user_id, user_actions, date_time) VALUES (?,?,?)");
             preparedStatement.setInt(1, user.getId());
             preparedStatement.setString(2, userActions.toString());
             preparedStatement.setString(3, time());
-
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -189,7 +172,7 @@ public class UserRepository {
     /**
      * Получить список активностей пользователя.
      */
-    public void getLogEntries() {
+    public void getAction() {
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT a.user_actions, a.date_time, u.login\n" +
@@ -201,17 +184,12 @@ public class UserRepository {
                 String action = resultSet.getString("user_actions");
                 String time = resultSet.getString("date_time");
                 String login = resultSet.getString("login");
-
                 System.out.println("Пользователь: " + login + ", действие: " + action + ", Дата и время: " + time);
             }
         } catch (SQLException e) {
-            System.out.println("Ошибка в методе getLogEntries. log: " + e.getMessage());
+            System.err.println("Ошибка в методе getLogEntries. log: " + e.getMessage());
         }
     }
-
-    //endregion
-
-    //regionDateTime
 
     /**
      * Форматирование даты и времени.
@@ -224,6 +202,4 @@ public class UserRepository {
         String formatterDataTime = now.format(formatter);
         return formatterDataTime;
     }
-
-    //endregion
 }

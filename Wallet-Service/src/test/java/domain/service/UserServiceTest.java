@@ -40,8 +40,8 @@ public class UserServiceTest {
 
         assertTrue(userService.registrationUser(login, password, name));
 
-        Mockito.verify(userRepository).saveUserInDataBase(user);
-        Mockito.verify(userRepository).addLogEntry(user, UserActions.REGISTRATION);
+        Mockito.verify(userRepository).saveUser(user);
+        Mockito.verify(userRepository).saveAction(user, UserActions.REGISTRATION);
     }
 
     @Test
@@ -53,11 +53,11 @@ public class UserServiceTest {
         User user = new User(name,login,password);
 
         Mockito.when(userRepository.userPresence(login)).thenReturn(true);
-        Mockito.when(userRepository.getUser(login)).thenReturn(user);
+        Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
         assertTrue(userService.authorizationUser(login,password));
 
-        Mockito.verify(userRepository).addLogEntry(user, UserActions.AUTHORIZATION);
+        Mockito.verify(userRepository).saveAction(user, UserActions.AUTHORIZATION);
     }
 
     @Test
@@ -68,11 +68,11 @@ public class UserServiceTest {
         User user = new User(name, login, "3456789");
 
         Mockito.when(userRepository.userPresence(login)).thenReturn(true);
-        Mockito.when(userRepository.getUser(login)).thenReturn(user);
+        Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
         assertFalse(userService.authorizationUser(login, password));
 
-        Mockito.verify(userRepository).addLogEntry(user, UserActions.FATAL);
+        Mockito.verify(userRepository).saveAction(user, UserActions.FATAL);
     }
 
     @Test
@@ -84,15 +84,15 @@ public class UserServiceTest {
         User user = new User(name,login,password);
         user.setBalance(100.0);
 
-        Mockito.when(userRepository.getUser(login)).thenReturn(user);
+        Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
         Mockito.when(userRepository.userPresence(login)).thenReturn(true);
 
         userService.withdrawalOfFunds(login, 50.0);
 
         assertEquals(50.0, user.getBalance());
         Mockito.verify(userRepository).updateBalance(user);
-        Mockito.verify(userRepository).addLogEntry(user, UserActions.DEBIT);
-        Mockito.verify(userRepository).addTransaction(user, TransactionType.DEBIT, 50.0);
+        Mockito.verify(userRepository).saveAction(user, UserActions.DEBIT);
+        Mockito.verify(userRepository).saveTransaction(user, TransactionType.DEBIT, 50.0);
     }
 
     @Test
@@ -102,7 +102,7 @@ public class UserServiceTest {
         String name = "Tomas Shelbi";
 
         User user = new User(name,login,password);
-        Mockito.when(userRepository.getUser(login)).thenReturn(user);
+        Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
         Mockito.when(userRepository.userPresence(login)).thenReturn(true);
     }
 
@@ -115,15 +115,15 @@ public class UserServiceTest {
         User user = new User(name,login,password);
         user.setBalance(100.0);
 
-        Mockito.when(userRepository.getUser(login)).thenReturn(user);
+        Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
         userService.balanceReplenishment(login, 50.0);
 
         assertEquals(150.0, user.getBalance());
 
         Mockito.verify(userRepository).updateBalance(user);
-        Mockito.verify(userRepository).addLogEntry(user, UserActions.CREDIT);
-        Mockito.verify(userRepository).addTransaction(user, TransactionType.CREDIT, 50.0);
+        Mockito.verify(userRepository).saveAction(user, UserActions.CREDIT);
+        Mockito.verify(userRepository).saveTransaction(user, TransactionType.CREDIT, 50.0);
     }
 
     @Test
@@ -133,11 +133,11 @@ public class UserServiceTest {
         String name = "Tomas Shelbi";
 
         User user = new User(name,login,password);
-        Mockito.when(userRepository.getUser(login)).thenReturn(user);
+        Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
         userService.replenishmentHistory(login);
         Mockito.verify(userRepository).getTransaction(user);
-        Mockito.verify(userRepository).addLogEntry(user, UserActions.HISTORY);
+        Mockito.verify(userRepository).saveAction(user, UserActions.HISTORY);
     }
 }
 

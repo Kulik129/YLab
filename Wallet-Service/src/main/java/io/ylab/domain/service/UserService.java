@@ -30,8 +30,8 @@ public class UserService implements ServiceUser {
     public boolean registrationUser(String login, String password, String name) {
         if (!repository.userPresence(login)) {
             User user = new User(name, login, password);
-            repository.saveUserInDataBase(user);
-            repository.addLogEntry(user, UserActions.REGISTRATION);
+            repository.saveUser(user);
+            repository.saveAction(user, UserActions.REGISTRATION);
             System.out.println("Добро пожаловать " + name + "\n");
             return true;
         }
@@ -48,13 +48,13 @@ public class UserService implements ServiceUser {
     @Override
     public boolean authorizationUser(String login, String password) {
         if (repository.userPresence(login)) {
-            User user = repository.getUser(login);
+            User user = repository.findByLogin(login);
             if (user.getPassword().equals(password)) {
-                repository.addLogEntry(user, UserActions.AUTHORIZATION);
+                repository.saveAction(user, UserActions.AUTHORIZATION);
                 System.out.println("Добро пожаловать " + user.getName() + "\n");
                 return true;
             } else {
-                repository.addLogEntry(user, UserActions.FATAL);
+                repository.saveAction(user, UserActions.FATAL);
                 return false;
             }
         }
@@ -69,8 +69,8 @@ public class UserService implements ServiceUser {
      */
     @Override
     public double currentBalance(String login) {
-        User user = repository.getUser(login);
-        repository.addLogEntry(user, UserActions.GET_BALANCE);
+        User user = repository.findByLogin(login);
+        repository.saveAction(user, UserActions.GET_BALANCE);
         return user.getBalance();
     }
 
@@ -82,20 +82,20 @@ public class UserService implements ServiceUser {
      */
     @Override
     public void withdrawalOfFunds(String login, double sum) {
-        User user = repository.getUser(login);
+        User user = repository.findByLogin(login);
         try {
             if (currentBalance(user.getLogin()) >= 0 && sum <= currentBalance(user.getLogin())) {
                 user.setBalance(user.getBalance() - sum);
                 repository.updateBalance(user);
-                repository.addLogEntry(user, UserActions.DEBIT);
-                repository.addTransaction(user, TransactionType.DEBIT, sum);
+                repository.saveAction(user, UserActions.DEBIT);
+                repository.saveTransaction(user, TransactionType.DEBIT, sum);
 
             } else {
                 throw new IllegalArgumentException("Недостаточно средств");
             }
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
-            repository.addLogEntry(user, UserActions.FATAL);
+            repository.saveAction(user, UserActions.FATAL);
         }
     }
 
@@ -107,11 +107,11 @@ public class UserService implements ServiceUser {
      */
     @Override
     public void balanceReplenishment(String login, double sum) {
-        User user = repository.getUser(login);
+        User user = repository.findByLogin(login);
         user.setBalance(user.getBalance() + sum);
         repository.updateBalance(user);
-        repository.addLogEntry(user, UserActions.CREDIT);
-        repository.addTransaction(user, TransactionType.CREDIT, sum);
+        repository.saveAction(user, UserActions.CREDIT);
+        repository.saveTransaction(user, TransactionType.CREDIT, sum);
     }
 
     /**
@@ -121,9 +121,9 @@ public class UserService implements ServiceUser {
      */
     @Override
     public void replenishmentHistory(String login) {
-        User user = repository.getUser(login);
+        User user = repository.findByLogin(login);
         repository.getTransaction(user);
-        repository.addLogEntry(user, UserActions.HISTORY);
+        repository.saveAction(user, UserActions.HISTORY);
     }
 
     /**
@@ -131,6 +131,6 @@ public class UserService implements ServiceUser {
      */
     @Override
     public void auditOfActions() {
-        repository.getLogEntries();
+        repository.getAction();
     }
 }
