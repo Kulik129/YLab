@@ -4,7 +4,7 @@ package domain.service;
 import io.ylab.domain.action.TransactionType;
 import io.ylab.domain.action.UserActions;
 import io.ylab.domain.models.User;
-import io.ylab.domain.service.UserService;
+import io.ylab.domain.service.UserServiceImpl;
 import io.ylab.infrastructure.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,9 +17,9 @@ import static junit.framework.TestCase.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class UserServiceTest {
+public class UserServiceImplTest {
     @InjectMocks
-    private UserService userService;
+    private UserServiceImpl userServiceImpl;
 
     @Mock
     private UserRepository userRepository;
@@ -38,7 +38,7 @@ public class UserServiceTest {
         User user = new User(1, name,login,password);
         Mockito.when(userRepository.userPresence(login)).thenReturn(false);
 
-        assertTrue(userService.registrationUser(login, password, name));
+        assertTrue(userServiceImpl.registrationUser(login, password, name));
 
         Mockito.verify(userRepository).saveUser(user);
         Mockito.verify(userRepository).saveAction(user, UserActions.REGISTRATION);
@@ -55,7 +55,7 @@ public class UserServiceTest {
         Mockito.when(userRepository.userPresence(login)).thenReturn(true);
         Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
-        assertTrue(userService.authorizationUser(login,password));
+        assertTrue(userServiceImpl.authorizationUser(login,password));
 
         Mockito.verify(userRepository).saveAction(user, UserActions.AUTHORIZATION);
     }
@@ -70,7 +70,7 @@ public class UserServiceTest {
         Mockito.when(userRepository.userPresence(login)).thenReturn(true);
         Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
-        assertFalse(userService.authorizationUser(login, password));
+        assertFalse(userServiceImpl.authorizationUser(login, password));
 
         Mockito.verify(userRepository).saveAction(user, UserActions.FATAL);
     }
@@ -87,7 +87,7 @@ public class UserServiceTest {
         Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
         Mockito.when(userRepository.userPresence(login)).thenReturn(true);
 
-        userService.withdrawalOfFunds(login, 50.0);
+        userServiceImpl.withdrawalOfFunds(login, 50.0);
 
         assertEquals(50.0, user.getBalance());
         Mockito.verify(userRepository).updateBalance(user);
@@ -117,7 +117,7 @@ public class UserServiceTest {
 
         Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
-        userService.balanceReplenishment(login, 50.0);
+        userServiceImpl.balanceReplenishment(login, 50.0);
 
         assertEquals(150.0, user.getBalance());
 
@@ -135,7 +135,7 @@ public class UserServiceTest {
         User user = new User(name,login,password);
         Mockito.when(userRepository.findByLogin(login)).thenReturn(user);
 
-        userService.replenishmentHistory(login);
+        userServiceImpl.replenishmentHistory(login);
         Mockito.verify(userRepository).getTransaction(user);
         Mockito.verify(userRepository).saveAction(user, UserActions.HISTORY);
     }

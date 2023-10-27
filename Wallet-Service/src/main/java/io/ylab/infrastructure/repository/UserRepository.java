@@ -29,7 +29,6 @@ public class UserRepository {
      * @param user передаем созданного юзера.
      */
     public void saveUser(User user) {
-
         try {
             PreparedStatement preparedStatement =
                     connection.prepareStatement(

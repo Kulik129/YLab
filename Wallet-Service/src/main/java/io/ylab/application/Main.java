@@ -1,6 +1,6 @@
 package io.ylab.application;
 
-import io.ylab.domain.service.UserService;
+import io.ylab.domain.service.UserServiceImpl;
 import io.ylab.infrastructure.migrations.DatabaseMigrator;
 import io.ylab.infrastructure.in.InputDataService;
 import io.ylab.infrastructure.repository.UserRepository;
@@ -26,8 +26,8 @@ public class Main {
 
             DatabaseMigrator.runDatabaseMigrations(URL, USER_NAME, PASSWORD);
             UserRepository userRepository = new UserRepository(URL, USER_NAME, PASSWORD);
-            UserService userService = new UserService(userRepository);
-            InputDataService inputDataService = new InputDataService(userService);
+            UserServiceImpl userServiceImpl = new UserServiceImpl(userRepository);
+            InputDataService inputDataService = new InputDataService(userServiceImpl);
 
             inputDataService.start();
         } catch (IOException e) {

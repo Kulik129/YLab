@@ -1,6 +1,6 @@
 package io.ylab.infrastructure.in;
 
-import io.ylab.domain.service.UserService;
+import io.ylab.domain.service.UserServiceImpl;
 
 import java.util.Scanner;
 
@@ -10,10 +10,10 @@ import java.util.Scanner;
  */
 
 public class InputDataService {
-    private UserService service;
+    private UserServiceImpl service;
 
-    public InputDataService(UserService userService) {
-        this.service = userService;
+    public InputDataService(UserServiceImpl userServiceImpl) {
+        this.service = userServiceImpl;
     }
 
     /**

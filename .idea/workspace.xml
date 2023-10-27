@@ -10,29 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="Доработка README">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/ServiceUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/in/InputDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/in/InputDataService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/001-create-table.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/030-create-table.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/002-insert-data.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/040-insert-data.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/003-create-table-migration.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/020-create-table-migration.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/004-create-schema.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/010-create-schema.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/chenchelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/resources/db/changelog/chenchelog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/classpath.index" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/001-create-table.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/002-insert-data.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/003-create-table-migration.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/004-create-schema.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/chenchelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/db/changelog/chenchelog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/application/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/domain/service/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/target/classes/io/ylab/infrastructure/repository/UserRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceImplTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -247,7 +231,8 @@
       <workItem from="1697873022439" duration="290000" />
       <workItem from="1697874892861" duration="1000" />
       <workItem from="1697886494532" duration="2022000" />
-      <workItem from="1698091530586" duration="2146000" />
+      <workItem from="1698091530586" duration="2589000" />
+      <workItem from="1698358874934" duration="473000" />
     </task>
     <task id="LOCAL-00001" summary="create jar">
       <created>1697010182472</created>
