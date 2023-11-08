@@ -21,7 +21,7 @@ public class UserRepositoryTest extends ContainersEnvironment {
 
     @BeforeEach
     void setUp() {
-        userRepository = new UserRepository("jdbc:postgresql://localhost:5432/y_lab", "root", "12345678");
+        userRepository = new UserRepository();
     }
     @AfterEach
     void tearDown() {

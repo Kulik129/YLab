@@ -7,6 +7,9 @@ import io.ylab.infrastructure.repository.UserRepository;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -25,7 +28,7 @@ public class Main {
             String PASSWORD = properties.getProperty("db.password");
 
             DatabaseMigrator.runDatabaseMigrations(URL, USER_NAME, PASSWORD);
-            UserRepository userRepository = new UserRepository(URL, USER_NAME, PASSWORD);
+            UserRepository userRepository = new UserRepository();
             UserServiceImpl userServiceImpl = new UserServiceImpl(userRepository);
             InputDataService inputDataService = new InputDataService(userServiceImpl);
 

@@ -12,11 +12,8 @@
     <list default="true" id="aaa3d009-23b6-42d7-bcbf-301a09d6cbf2" name="Changes" comment="Доработка README">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/ServiceUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/domain/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/in/InputDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/in/InputDataService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/main/java/io/ylab/infrastructure/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/domain/service/UserServiceImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Wallet-Service/src/test/java/io/ylab/infrastructure/repository/UserRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,22 +156,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest.testAddTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Wallet-Service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.ylab.infrastructure.repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="io.ylab.infrastructure.repository" />
-      <option name="MAIN_CLASS_NAME" value="io.ylab.infrastructure.repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="testAddTransaction" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="UserRepositoryTest.testGetTransaction" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Wallet-Service" />
       <extension name="coverage">
@@ -191,6 +172,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="UserServiceImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Wallet-Service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.service" />
+      <option name="MAIN_CLASS_NAME" value="domain.service.UserServiceImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
@@ -200,10 +196,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.UserServiceImplTest" />
         <item itemvalue="JUnit.UserRepositoryTest" />
         <item itemvalue="JUnit.UserRepositoryTest.testAddLogEntry" />
         <item itemvalue="JUnit.UserRepositoryTest.testGetTransaction" />
-        <item itemvalue="JUnit.UserRepositoryTest.testAddTransaction" />
       </list>
     </recent_temporary>
   </component>
@@ -233,6 +229,8 @@
       <workItem from="1697886494532" duration="2022000" />
       <workItem from="1698091530586" duration="2589000" />
       <workItem from="1698358874934" duration="473000" />
+      <workItem from="1698406475570" duration="1901000" />
+      <workItem from="1698408410684" duration="3199000" />
     </task>
     <task id="LOCAL-00001" summary="create jar">
       <created>1697010182472</created>
