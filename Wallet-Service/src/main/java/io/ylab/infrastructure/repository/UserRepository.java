@@ -50,7 +50,7 @@ public class UserRepository {
 
             connection.close();
         } catch (SQLException e) {
-            System.err.println("Ошибка в методе saveUserInDataBase. log: " + e.getMessage());
+            System.err.println("Ошибка в методе saveUser. log: " + e.getMessage());
         }
     }
 
@@ -216,7 +216,7 @@ public class UserRepository {
             }
             connection.close();
         } catch (SQLException e) {
-            System.err.println("Ошибка в методе getLogEntries. log: " + e.getMessage());
+            System.err.println("Ошибка в методе getAction. log: " + e.getMessage());
         }
     }
 
