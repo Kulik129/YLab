@@ -1,5 +1,6 @@
 package io.ylab.domain.models;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -100,6 +101,14 @@ public class User {
 
     public User(int id, String name, String login, String password) {
         this.id = id;
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.transactions = new ArrayList<>();
+        this.actionLog = new ArrayList<>();
+    }
+
+    public User(String name, String login, String password) {
         this.name = name;
         this.login = login;
         this.password = password;

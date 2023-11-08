@@ -80,8 +80,21 @@ public class Transaction {
         this.localDateTime = localDateTime;
     }
 
+    public Transaction(int id, TransactionType transactionType, double sum, LocalDateTime localDateTime) {
+        this.id = id;
+        this.transactionType = transactionType;
+        this.sum = sum;
+        this.localDateTime = localDateTime;
+    }
 
-//endregion
+    public Transaction(User user, TransactionType transactionType, double sum, LocalDateTime localDateTime) {
+        this.user = user;
+        this.transactionType = transactionType;
+        this.sum = sum;
+        this.localDateTime = localDateTime;
+    }
+
+    //endregion
 
     //regionToString
 

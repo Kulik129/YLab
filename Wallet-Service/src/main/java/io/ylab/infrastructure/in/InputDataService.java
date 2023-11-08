@@ -1,13 +1,7 @@
 package io.ylab.infrastructure.in;
 
-import io.ylab.domain.action.UserActions;
-import io.ylab.domain.models.LogEntry;
-import io.ylab.domain.models.Transaction;
-import io.ylab.domain.models.User;
-import io.ylab.domain.service.UserService;
+import io.ylab.domain.service.UserServiceImpl;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,257 +10,10 @@ import java.util.Scanner;
  */
 
 public class InputDataService {
+    private UserServiceImpl service;
 
-
-    /**
-     * Вход в приложение.
-     */
-    public static void login(UserService service) {
-        try {
-            Scanner scannerLogin = new Scanner(System.in);
-
-            System.out.println("Введите логин");
-            String login = scannerLogin.nextLine();
-
-            if (login != null && service.userMap.containsKey(login)) {
-                System.out.println("Введите пароль");
-                String password = scannerLogin.nextLine();
-                User user = service.userMap.get(login);
-                if (password != null && user.getPassword().equals(password)) {
-                    service.authorizationUser(login, password);
-                    if (login.equals("admin")) {
-                        adminPanel(service, login);
-                    } else {
-                        navigationMenu(service, login);
-                    }
-                } else {
-                    System.out.println("Ошибка в пароле..");
-                    login(service);
-                    service.auditOfActions(user, UserActions.FATAL);
-                }
-            } else {
-                System.out.println("Логина: " + login + " не существует");
-                login(service);
-            }
-            scannerLogin.close();
-        } catch (Exception e) {
-            System.err.println("Произошла ошибка: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Панель администратора.
-     *
-     * @param service сервис обработки основных методов.
-     * @param login   логин пользователя.
-     */
-    public static void adminPanel(UserService service, String login) {
-        try {
-            User user = service.userMap.get(login);
-            Scanner scannerAdmin = new Scanner(System.in);
-            System.out.println(
-                    "0 Посмотреть аудит действий" + "\n" +
-                            "5 Выйти из приложения" + "\n"
-            );
-            String answer = scannerAdmin.nextLine();
-
-            switch (answer) {
-                case "0":
-                    auditOUserActions(service);
-                    adminPanel(service, login);
-                    break;
-                case "5":
-                    logOut(service, user);
-                    break;
-                default:
-                    System.out.println("Такой команды нет...");
-                    adminPanel(service, login);
-            }
-        } catch (Exception ex) {
-            System.err.println("Произошла ошибка: " + ex.getMessage());
-            adminPanel(service,login);
-        }
-    }
-
-    /**
-     * Просмотр действий пользователя.
-     *
-     * @param service сервис обработки основных методов.
-     */
-    public static void auditOUserActions(UserService service) {
-        try {
-            if (service.listActions.isEmpty()) {
-                System.out.println("Активностей нет");
-            } else {
-                for (LogEntry log : service.listActions) {
-                    System.out.println(log);
-                }
-            }
-        }catch (Exception ex){
-            System.err.println("Произошла ошибка: " + ex.getMessage());
-            auditOUserActions(service);
-        }
-    }
-
-    /**
-     * Просмотр истории операций.
-     *
-     * @param service сервис обработки основных методов.
-     * @param login   логин пользователя по которому будет осуществляться поиск его операций.
-     */
-    public static void viewingHistory(UserService service, String login) {
-        try {
-            User user = service.userMap.get(login);
-            service.auditOfActions(user, UserActions.HISTORY);
-            List<Transaction> userTransactions = new ArrayList<>();
-
-            for (Transaction transaction : service.transactions) {
-                if (transaction.getUser().getLogin().equals(login)) {
-                    userTransactions.add(transaction);
-                }
-            }
-            if (userTransactions.isEmpty()) {
-                System.out.println("История пуста...");
-            } else {
-                for (Transaction transaction : userTransactions) {
-                    System.out.println(transaction);
-                }
-            }
-        } catch (Exception ex) {
-            System.err.println("Произошла ошибка: " + ex.getMessage());
-            viewingHistory(service, login);
-        }
-    }
-
-    /**
-     * Навигационное меню.
-     *
-     * @param service сервис обработки основных методов.
-     * @param login   логин пользователя, по которому будет подбираться меню.
-     */
-    public static void navigationMenu(UserService service, String login) {
-        try {
-            System.out.println(
-                    "1 Посмотреть баланс" + "\n" +
-                            "2 Пополнить баланс" + "\n" +
-                            "3 снятие наличных" + "\n" +
-                            "4 история операций" + "\n" +
-                            "5 выход из приложения"
-            );
-            if (login.equals("admin")) {
-                adminPanel(service, login);
-            }
-            Scanner scannerMenu = new Scanner(System.in);
-            String answer = scannerMenu.nextLine();
-            User user = service.userMap.get(login);
-            switch (answer) {
-                case "1":
-                    System.out.println("Ваш баланс: " + service.currentBalance(user) + "\n");
-                    navigationMenu(service, login);
-                    break;
-                case "2":
-                    System.out.println("Введите сумму для пополнения");
-                    double sumCredit = scannerMenu.nextDouble();
-                    service.balanceReplenishment(login, sumCredit);
-                    navigationMenu(service, login);
-                    break;
-                case "3":
-                    System.out.println("Введите сумму для снятия");
-                    double sumDebit = scannerMenu.nextDouble();
-                    service.withdrawalOfFunds(login, sumDebit);
-                    navigationMenu(service, login);
-                    break;
-                case "4":
-                    viewingHistory(service, login);
-                    navigationMenu(service, login);
-                    break;
-                case "5":
-                    logOut(service, user);
-                    break;
-                default:
-                    System.out.println("Вы ошиблись! Такой команды нет...");
-                    navigationMenu(service, login);
-            }
-        }catch (Exception ex){
-            System.err.println("Произошла ошибка: " + ex.getMessage());
-            navigationMenu(service, login);
-        }
-    }
-
-    /**
-     * Выход из приложения.
-     *
-     * @param service сервис обработки основных методов.
-     * @param user    пользователь приложения.
-     */
-    public static void logOut(UserService service, User user) {
-        try {
-            service.auditOfActions(user, UserActions.LOGOUT);
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Всего хорошего!");
-            System.out.println("1 войти" + "\n" + "2 Регистрация");
-            String answer = scanner.nextLine();
-            switch (answer) {
-                case "1":
-                    login(service);
-                    break;
-                case "2":
-                    registration(service);
-                    break;
-                default:
-            }
-        }catch (Exception ex){
-            System.err.println("Произошла ошибка: " + ex.getMessage());
-            logOut(service, user);
-        }
-    }
-
-    /**
-     * Регистрация в приложении.
-     *
-     * @param service сервис обработки основных методов
-     */
-    public static void registration(UserService service) {
-        try {
-            Scanner scannerRegistration = new Scanner(System.in);
-            String name;
-            String loginNew;
-            String passwordNew;
-
-            do {
-                System.out.println("Введите имя");
-                name = scannerRegistration.nextLine().trim();
-                if (name.isEmpty()) {
-                    System.out.println("Имя не может быть пустым или состоять только из пробелов."
-                            + "\n" + "Пожалуйста, введите имя.");
-                }
-            } while (name.isEmpty());
-
-            do {
-                System.out.println("Введите логин");
-                loginNew = scannerRegistration.nextLine().trim();
-                if (loginNew.isEmpty()) {
-                    System.out.println("Логин не может быть пустым или состоять только из пробелов."
-                            + "\n" + "Пожалуйста, введите логин.");
-                }
-            } while (loginNew.isEmpty() || service.userMap.containsKey(loginNew));
-
-            do {
-                System.out.println("Введите пароль");
-                passwordNew = scannerRegistration.nextLine().trim();
-                if (passwordNew.isEmpty()) {
-                    System.out.println("Пароль не может быть пустым или состоять только из пробелов."
-                            + "\n" + "Пожалуйста, введите пароль.");
-                }
-            } while (passwordNew.isEmpty());
-
-            service.registrationUser(name, loginNew, passwordNew);
-            navigationMenu(service, loginNew);
-            scannerRegistration.close();
-        } catch (Exception ex) {
-            System.err.println("Произошла ошибка: " + ex.getMessage());
-            registration(service);
-        }
+    public InputDataService(UserServiceImpl userServiceImpl) {
+        this.service = userServiceImpl;
     }
 
     /**
@@ -275,25 +22,176 @@ public class InputDataService {
      */
     public void start() {
         try {
-            UserService inputService = new UserService();
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Нажмите 1 для входа" + "\n" + "Нажмите 2 для регистрации");
-            String answer = scanner.nextLine();
+            System.out.println("1 - Вход" + "\n" + "2 - Регистрация");
 
+            String answer = scanner.nextLine();
             switch (answer) {
                 case "1":
-                    InputDataService.login(inputService);
+                    login();
                     break;
                 case "2":
-                    InputDataService.registration(inputService);
+                    registration();
                     break;
                 default:
-                    System.out.println("Такой команды нет... ");
+                    System.out.println("Ошибка команды.." + "\n");
                     start();
             }
-        }catch (Exception ex) {
-            System.err.println("Произошла ошибка: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Произошла ошибка ввода...");
             start();
+        }
+    }
+
+    /**
+     * Навигационное меню с доступными командами для пользователя.
+     *
+     * @param login логин пользователя.
+     */
+    public void navigationMenu(String login) {
+        try {
+            if (login.equals("admin")) {
+                adminPanel();
+            } else {
+                Scanner scanner = new Scanner(System.in);
+                System.out.println(
+                        "1 - Текущий баланс" + "\n" +
+                                "2 - Снятие наличных" + "\n" +
+                                "3 - Пополнение баланса" + "\n" +
+                                "4 - История операций" + "\n" +
+                                "5 - Выход из приложения"
+                );
+                String answer = scanner.nextLine();
+                switch (answer) {
+                    case "1":
+                        System.out.println("Ваш баланс: " + service.currentBalance(login) + "\n");
+                        navigationMenu(login);
+                        break;
+                    case "2":
+                        System.out.println("Введите сумму для снятия: ");
+                        double sumDebit = scanner.nextDouble();
+                        service.withdrawalOfFunds(login, sumDebit);
+                        navigationMenu(login);
+                        break;
+                    case "3":
+                        System.out.println("Введите сумму для пополнения: ");
+                        double sumCredit = scanner.nextDouble();
+                        service.balanceReplenishment(login, sumCredit);
+                        navigationMenu(login);
+                        break;
+                    case "4":
+                        service.replenishmentHistory(login);
+                        navigationMenu(login);
+                        break;
+                    case "5":
+                        System.out.println("Всего хорошего!" + "\n");
+                        login();
+                        break;
+                    default:
+                        System.out.println("Ошибка команды.." + "\n");
+                        navigationMenu(login);
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Произошла ошибка ввода...");
+            navigationMenu(login);
+        }
+    }
+
+    /**
+     * Регистрация пользователя в приложении.
+     */
+    public void registration() {
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            String name;
+            String login;
+            String password;
+
+            do {
+                System.out.println("Придумайте логин");
+                login = scanner.nextLine().trim();
+                if (login.isEmpty()) {
+                    System.out.println("Логин не может быть пустым или состоять только из пробелов."
+                            + "\n" + "Пожалуйста, введите логин.");
+                }
+            } while (login.isEmpty());
+            do {
+                System.out.println("Придумайте пароль");
+                password = scanner.nextLine().trim();
+                if (password.isEmpty()) {
+                    System.out.println("Логин не может быть пустым или состоять только из пробелов."
+                            + "\n" + "Пожалуйста, введите логин.");
+                }
+            } while (password.isEmpty());
+            do {
+                System.out.println("Введите имя");
+                name = scanner.nextLine().trim();
+                if (name.isEmpty()) {
+                    System.out.println("Имя не может быть пустым или состоять только из пробелов."
+                            + "\n" + "Пожалуйста, введите имя.");
+                }
+            } while (name.isEmpty());
+            if (service.registrationUser(login, password, name)) {
+                navigationMenu(login);
+            } else {
+                registration();
+            }
+        } catch (Exception ex) {
+            System.err.println("Произошла ошибка: " + ex.getMessage());
+            registration();
+        }
+    }
+
+    /**
+     * Вход в приложение.
+     */
+    public void login() {
+        try {
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Ведите логин");
+            String login = scanner.nextLine();
+            System.out.println("Ведите пароль");
+            String password = scanner.nextLine();
+
+            if (service.authorizationUser(login, password)) {
+                navigationMenu(login);
+            } else {
+                System.out.println("Ошибка авторизации");
+                start();
+            }
+        } catch (Exception ex) {
+            System.out.println("Произошла ошибка ввода...");
+            login();
+        }
+    }
+
+    /**
+     * Панель администратора.
+     */
+    public void adminPanel() {
+        try {
+            System.out.println(
+                    "0 - Аудит действий пользователя" + "\n" +
+                            "5 - Выход из приложения" + "\n"
+            );
+            Scanner scanner = new Scanner(System.in);
+            String answer = scanner.nextLine();
+            switch (answer) {
+                case "0":
+                    service.auditOfActions();
+                    break;
+                case "5":
+                    login();
+                    break;
+                default:
+            }
+            adminPanel();
+        } catch (Exception ex) {
+            System.out.println("Произошла ошибка ввода...");
+            adminPanel();
         }
     }
 }

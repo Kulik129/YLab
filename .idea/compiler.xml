@@ -9,8 +9,5 @@
         <module name="Wallet-Service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Wallet-Service" target="17" />
-    </bytecodeTargetLevel>
   </component>
 </project>

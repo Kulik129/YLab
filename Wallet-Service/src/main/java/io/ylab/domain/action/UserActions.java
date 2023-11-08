@@ -6,10 +6,9 @@ package io.ylab.domain.action;
 public enum UserActions {
     REGISTRATION,
     AUTHORIZATION,
-    LOGOUT,
     GET_BALANCE,
-    CREDIT, // снятие денег
-    DEBIT, // пополнение счета
+    CREDIT,
+    DEBIT,
     FATAL,
     HISTORY
 }

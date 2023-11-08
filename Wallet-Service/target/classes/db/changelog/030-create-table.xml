@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.10.xsd">
+
+    <!-- Создание таблицы пользователей (user) -->
+    <changeSet id="001-create-user" author="Dmitrii_Kulik">
+        <createTable tableName="users" schemaName="data">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(55)"/>
+            <column name="login" type="VARCHAR(55)">
+                <constraints unique="true"/>
+            </column>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="balance" type="INTEGER"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Создание таблицы транзакций (transaction) -->
+    <changeSet id="002-create-transaction" author="Dmitrii_Kulik">
+        <createTable tableName="transactions"  schemaName="data">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="INTEGER">
+                <constraints foreignKeyName="transaction_fk_user" references="data.users(id)"/>
+            </column>
+            <column name="transaction_type" type="VARCHAR(55)"/>
+            <column name="transaction_sum" type="INTEGER"/>
+            <column name="date_time" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Создание таблицы действий (action) -->
+    <changeSet id="003-create-action" author="Dmitrii_Kulik">
+        <createTable tableName="actions"  schemaName="data">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints foreignKeyName="action_fk_user" references="data.users(id)"/>
+            </column>
+            <column name="user_actions" type="VARCHAR(55)"/>
+            <column name="date_time" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
